@@ -9,7 +9,6 @@ function addRow() {
   }
 
   const tableBody = document.getElementById("book-list");
-
   const newRow = document.createElement("tr");
 
   const titleCell = document.createElement("td");
@@ -24,7 +23,7 @@ function addRow() {
   const actionCell = document.createElement("td");
   const deleteBtn = document.createElement("button");
   deleteBtn.innerText = "❌";
-  deleteBtn.style.cursor = "pointer";
+  deleteBtn.className = "delete"; // Important for Cypress test
   deleteBtn.onclick = () => newRow.remove();
   actionCell.appendChild(deleteBtn);
 
@@ -35,7 +34,7 @@ function addRow() {
 
   tableBody.appendChild(newRow);
 
-  // Clear input fields
+  // Clear inputs
   title.value = "";
   author.value = "";
   isbn.value = "";
