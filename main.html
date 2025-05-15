@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>My book list</title>
-  </head>
-  <body>
-    <div id="input">
-      <h1>My<span>Book</span>List</h1>
-      <form action="" class="form-group">
-        <label for="title">Title</label>
-        <input type="text" id="title" />
-        <label for="author">Author</label>
-        <input type="text" id="author" />
-        <label for="isbn">ISBM#</label>
-        <input type="text" id="isbn" />
-      </form>
-      <button id="submit" onclick="addRow()">Add Book</button>
-    </div>
-    <br /><br />
-    <div id="bookOwn">
-      <table class="table table-striped">
-        <tbody id="table-body">
-          <tr id="book-list" >
-            <th>Title</th>
-            <th>Author</th>
-            <th>ISBM#</th>
-          </tr>
-          
-        </tbody>
-      </table>
-      
-    </div>
-    <script src="script.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Book List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="input">
+    <h1>My <span>Book</span> List</h1>
+    <form class="form-group" onsubmit="event.preventDefault(); addRow();">
+      <label for="title">Title</label>
+      <input type="text" id="title" required />
+      <label for="author">Author</label>
+      <input type="text" id="author" required />
+      <label for="isbn">ISBN#</label>
+      <input type="text" id="isbn" required />
+      <button id="submit" type="submit">Add Book</button>
+    </form>
+  </div>
+
+  <br><br>
+
+  <div id="bookOwn">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>ISBN#</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="book-list">
+        <!-- New rows will be added here -->
+      </tbody>
+    </table>
+    <hr>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>

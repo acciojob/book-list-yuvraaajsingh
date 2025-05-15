@@ -1,28 +1,42 @@
-//your JS code here. If required.
 function addRow() {
-  let title = document.getElementById("title");
-  let author = document.getElementById("author");
-  let isbn = document.getElementById("isbn");
+  const title = document.getElementById("title");
+  const author = document.getElementById("author");
+  const isbn = document.getElementById("isbn");
 
-  let tableteg = document.getElementById("table-body");
-  let newRow = document.createElement("tr");
-  let newTitle = document.createElement("td");
-  let newAuthor = document.createElement("td");
-  let newISBN = document.createElement("td");
-  let dltBTn= document.createElement("button");
-
-  newTitle.innerText = title.value;
-  newAuthor.innerText = author.value;
-  newISBN.innerText = isbn.value;
-  dltBTn.innerText= "❌";
-
-  newRow.appendChild(newTitle);
-  newRow.appendChild(newAuthor);
-  newRow.appendChild(newISBN);
-  newRow.appendChild(dltBTn);
-  tableteg.appendChild(newRow);
-
-  dltBTn.onclick = function(){
-    newRow.remove();
+  if (!title.value.trim() || !author.value.trim() || !isbn.value.trim()) {
+    alert("Please fill all fields.");
+    return;
   }
+
+  const tableBody = document.getElementById("book-list");
+
+  const newRow = document.createElement("tr");
+
+  const titleCell = document.createElement("td");
+  titleCell.innerText = title.value;
+
+  const authorCell = document.createElement("td");
+  authorCell.innerText = author.value;
+
+  const isbnCell = document.createElement("td");
+  isbnCell.innerText = isbn.value;
+
+  const actionCell = document.createElement("td");
+  const deleteBtn = document.createElement("button");
+  deleteBtn.innerText = "❌";
+  deleteBtn.style.cursor = "pointer";
+  deleteBtn.onclick = () => newRow.remove();
+  actionCell.appendChild(deleteBtn);
+
+  newRow.appendChild(titleCell);
+  newRow.appendChild(authorCell);
+  newRow.appendChild(isbnCell);
+  newRow.appendChild(actionCell);
+
+  tableBody.appendChild(newRow);
+
+  // Clear input fields
+  title.value = "";
+  author.value = "";
+  isbn.value = "";
 }
